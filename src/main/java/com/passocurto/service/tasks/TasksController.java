@@ -18,7 +18,8 @@ public class TasksController {
     // Define your endpoints here, e.g., GET, POST, PUT, DELETE
 
     @PostMapping
-    public ResponseEntity<TasksEntity> createTask(@RequestBody TasksEntity taskEntity) {
+    public ResponseEntity<TasksEntity> createTask(@RequestBody TaskRequest taskRequest) {
+        TasksEntity taskEntity = new TasksEntity(taskRequest);
         return ResponseEntity.ok(this.tasksRepository.save(taskEntity));
     }
 
